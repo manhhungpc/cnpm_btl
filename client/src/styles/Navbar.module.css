@@ -15,11 +15,11 @@
 }
 
 .tab:hover {
-  color: #fff;
-  background-color: #3871a7;
+  color: rgb(255, 255, 255);
+  background-color: #3300FF;
 }
 
 .textTab {
   text-transform: none;
-  font-size: 18px;
+  font-size: 16px;
 }
