@@ -8,4 +8,6 @@ const authRouter = express.Router();
 
 authRouter.post(APIRoute.login, authMiddleware.login, catchAsync(authController.login));
 
+authRouter.post(APIRoute.signup, authMiddleware.signup, catchAsync(authController.signup));
+
 export default authRouter;
