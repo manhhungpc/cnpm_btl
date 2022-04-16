@@ -1,9 +1,27 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import database from "../utils/db";
 import { validateEmail } from "../utils/validate";
 import { responseError } from "../const/app.const";
 
 const Users = database.Model.userModel;
+
+export const validateToken = async (req, res, next) => {
+  const { authorization } = req.headers;
+
+  if (!authorization) {
+    return res.status(403).json(responseError("Unauthorized token invalid!"));
+  }
+
+  const token = authorization.split(" ")[1];
+
+  await jwt.verify(token, process.env.JWT_SECRET, async (err, decode) => {
+    if (err) return res.status(403).json(responseError(err));
+
+    req.body.id = decode.id;
+    next();
+  });
+};
 
 export const login = async (req, res, next) => {
   if (!req.body.email) {

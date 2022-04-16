@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import database from "./src/utils/db";
 import * as APIRoute from "./src/const/api.const";
 import authRouter from "./src/routes/auth";
+import jobRoute from "./src/routes/job";
 import * as errorHandler from "./src/routes/error";
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use(APIRoute.ROOT, authRouter);
+app.use(APIRoute.ROOT, jobRoute);
 
 app.use("*", errorHandler.notFound);
 app.use(errorHandler.serverError);
