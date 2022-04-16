@@ -6,6 +6,7 @@ const Jobs = (sequelize, Sequelize) => {
       defaultValue: Sequelize.UUIDV4,
       allowNull: false,
     },
+    title: Sequelize.TEXT + " CHARSET utf8 COLLATE utf8_general_ci",
     content: Sequelize.TEXT + " CHARSET utf8 COLLATE utf8_general_ci",
     skill_required: Sequelize.STRING,
     area: Sequelize.STRING,
@@ -13,7 +14,7 @@ const Jobs = (sequelize, Sequelize) => {
     type: Sequelize.INTEGER,
     time_required: Sequelize.DATE,
     available: Sequelize.BOOLEAN,
-    fee: Sequelize.INTEGER,
+    fee: Sequelize.STRING,
   });
 
   return Job;
