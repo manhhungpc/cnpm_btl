@@ -1,6 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap");
+.wrapper {
+  background-color: #fff;
+  color: #000;
+  height: 50px;
+}
+
 .title {
   flex-grow: 1;
+}
+
+.grid {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px;
 }
 
 .logoText {
@@ -16,10 +28,14 @@
 
 .tab:hover {
   color: rgb(255, 255, 255);
-  background-color: #3300FF;
+  background-color: #3300ff;
 }
 
 .textTab {
   text-transform: none;
   font-size: 16px;
+}
+
+.btn {
+  margin: 5px 10px;
 }
