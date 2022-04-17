@@ -6,7 +6,7 @@ import styles from "../styles/Navbar.module.css";
 
 export default function Navbar() {
   return (
-    <AppBar position="static" className={styles.wrapper}>
+    <AppBar position="static" style={{ backgroundColor: "#fff", color: "#000", height: "50px" }}>
       <div className={styles.grid}>
         <div>
           <Tab
@@ -23,10 +23,15 @@ export default function Navbar() {
           <Tab label={<p className={styles.textTab}>Về chúng tôi</p>} className={styles.tab} />
         </div>
         <div>
-          <Button href="/login" variant="contained" color="primary" className={styles.btn}>
+          <Button href="/login" variant="contained" color="primary" style={{ margin: "5px 8px" }}>
             Đăng nhập
           </Button>
-          <Button href="/register" variant="contained" color="primary" className={styles.btn}>
+          <Button
+            href="/register"
+            variant="contained"
+            color="primary"
+            style={{ margin: "5px 8px" }}
+          >
             Đăng ký
           </Button>
         </div>
