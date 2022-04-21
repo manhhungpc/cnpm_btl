@@ -1,0 +1,32 @@
+.container {
+  margin: 3% 10%;
+}
+
+.userInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+}
+
+.field {
+  margin: 20px 0;
+}
+
+.content {
+  line-height: 1.6;
+}
+
+.acceptBtn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  margin: 10px 0;
+}
+
+.notif {
+  text-align: center;
+  color: #e6b801;
+  font-weight: 600;
+}
