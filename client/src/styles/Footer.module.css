@@ -1,7 +1,7 @@
 .card {
     border-radius: 0%;
     background-image: linear-gradient(to left bottom, #1a6be6, #576ee9, #7a71eb, #9674ec, #af77ec);
-    padding: 0 5%;
+    padding: 0.4% 5%;
   }
   
   .title {
@@ -52,17 +52,29 @@
 
   .listItem1 {
     color: #fff;
+    margin-top: 8px;
+    line-height: 30px;
+  }
+
+  .listItem2 {
+    color: #fff;
+    margin-top: 8px;
     line-height: 25px;
+    text-indent: 55%;
   }
 
   .infor {
     color: #fff;
-    /* padding-bottom: 5px; */
+    margin-bottom: 10px;
   }
 
   .photo {
     height: 50px;
     width: 56px; 
     margin-top: 0px;
-  
-}
+  }
+    .photo1 {
+    height: 55px;
+    width: 120px; 
+    margin-top: 14px;
+  }
