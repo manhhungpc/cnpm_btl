@@ -14,7 +14,7 @@ export default function Footer() {
         <Grid container spacing={3}>
           <Grid item sm={3}>
             {/* <p className={styles.title1}>  <img className={styles.photo} src={process.env.PUBLIC_URL+"PNGfooter.png"} /> HELPY</p> */}
-            <img className={styles.photo1} src={process.env.PUBLIC_URL+"Text.png"} />
+            <img className={styles.photo1} src="/Text.png" />
             <p className={styles.listItem1}>Nếu bạn có nhu cầu sửa chữa các thiết bị trong gia đình, xe cộ hay đơn giản chỉ là shipper... Helpy sẽ giúp bạn không cần phải lo lắng về điều đó. </p>
             {/* <img className="photo" src={process.env.PUBLIC_URL+"PNGfooter.png"} /> */}
           </Grid>
