@@ -1,0 +1,13 @@
+.title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.inputArea {
+  width: 48%;
+}
+
+.info {
+  margin-top: 20px;
+}
