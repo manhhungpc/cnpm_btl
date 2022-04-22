@@ -21,7 +21,27 @@ export default function Register() {
         <Grid container >
           <Grid item xs={5} sm={5}>
           <img src={process.env.PUBLIC_URL+"register.svg"}
-                  style={{width: "80%", marginLeft: '40px', marginTop: '25px'}} alt="register"/>
+                  style={{width: "60%", marginLeft: '40px', marginTop: '25px'}} alt="register"/>
+          <Typography component="h1" variant="h5" color="primary" sx={{ marginTop: 3, marginLeft:3,  mb: 2, align: 'center', fontSize: '28px' }} >
+                Đăng ký với tư cách: 
+          </Typography>     
+          <Box sx={{
+             marginTop: 2,
+             marginLeft: 10,
+             display: 'flex',
+             flexDirection: 'row',
+             alignItems: 'center',
+             }}
+          >     
+           <Button variant="text" size="small" style={{display: "flex", flexDirection: "column"}}>
+            <img src={process.env.PUBLIC_URL+"helper.png"} width="100" alt="helper"/>
+            <label>Người giúp đỡ</label>
+            </Button>
+            <Button variant="text" size="small" style={{ marginLeft: 3, display: "flex", flexDirection: "column"}}>
+            <img src={process.env.PUBLIC_URL+"demander.png"}  width="100" alt="demander"/>
+            <label>Người cần giúp đỡ</label>
+            </Button>
+          </Box>
           </Grid>
 
           <Grid container xs={7} sm={7} spacing={0}>
@@ -101,69 +121,15 @@ export default function Register() {
                   id="province"
                   label="Tỉnh/Thành phố"
                 >
-                  <MenuItem value={"An Giang"}> An Giang</MenuItem>
-                  <MenuItem value={"Bà Rịa - Vũng Tàu"}> Bà Rịa - Vũng Tàu</MenuItem>
-                  <MenuItem value={"Bắc Giang"}> Bắc Giang</MenuItem>
-                  <MenuItem value={"Bắc Kạn"}> Bắc Kạn</MenuItem>
-                  <MenuItem value={"Bạc Liêu"}> Bạc Liêu</MenuItem>
                   <MenuItem value={"Bắc Ninh"}> Bắc Ninh</MenuItem>
-                  <MenuItem value={"Bến Tre"}> Bến Tre</MenuItem>
-                  <MenuItem value={"Bình Định"}> Bình Định</MenuItem>
-                  <MenuItem value={"Bình Dương"}> Bình Dương</MenuItem>
-                  <MenuItem value={"Bình Phước"}> Bình Phước</MenuItem>
-                  <MenuItem value={"Bình Thuận"}> Bình Thuận</MenuItem>
-                  <MenuItem value={"Cà Mau"}> Cà Mau</MenuItem>
-                  <MenuItem value={"Cần Thơ"}> Cần Thơ</MenuItem>
-                  <MenuItem value={"Cao Bằng"}> Cao Bằng</MenuItem>
-                  <MenuItem value={"Đà Nẵng"}> Đà Nẵng</MenuItem>
-                  <MenuItem value={"Đắk Lắk"}> Đắk Lắk</MenuItem>
-                  <MenuItem value={"Đắk Nông"}> Đắk Nông</MenuItem>
-                  <MenuItem value={"Điện Biên"}> Điện Biên</MenuItem>
-                  <MenuItem value={"Đồng Nai"}> Đồng Nai</MenuItem>
-                  <MenuItem value={"Đồng Tháp"}> Đồng Tháp</MenuItem>
-                  <MenuItem value={"Gia Lai"}> Gia Lai</MenuItem>
                   <MenuItem value={"Hà Giang"}> Hà Giang</MenuItem>
                   <MenuItem value={"Hà Nam"}> Hà Nam</MenuItem>
                   <MenuItem value={"Hà Nội"}> Hà Nội</MenuItem>
                   <MenuItem value={"Hà Tĩnh"}> Hà Tĩnh</MenuItem>
                   <MenuItem value={"Hải Dương"}> Hải Dương</MenuItem>
                   <MenuItem value={"Hải Phòng"}> Hải Phòng</MenuItem>
-                  <MenuItem value={"Hậu Giang"}> Hậu Giang</MenuItem>
                   <MenuItem value={"Hòa Bình"}> Hòa Bình</MenuItem>
                   <MenuItem value={"Hưng Yên"}> Hưng Yên</MenuItem>
-                  <MenuItem value={"Khánh Hòa"}> Khánh Hòa</MenuItem>
-                  <MenuItem value={"Kiên Giang"}> Kiên Giang</MenuItem>
-                  <MenuItem value={"Kon Tum"}> Kon Tum</MenuItem>
-                  <MenuItem value={"Lai Châu"}> Lai Châu</MenuItem>
-                  <MenuItem value={"Lâm Đồng"}> Lâm Đồng</MenuItem>
-                  <MenuItem value={"Lạng Sơn"}> Lạng Sơn</MenuItem>
-                  <MenuItem value={"Lào Cai"}> Lào Cai</MenuItem>
-                  <MenuItem value={"Long An"}> Long An</MenuItem>
-                  <MenuItem value={"Nam Định"}> Nam Định</MenuItem>
-                  <MenuItem value={"Nghệ An"}> Nghệ An</MenuItem>
-                  <MenuItem value={"Ninh Bình"}> Ninh Bình</MenuItem>
-                  <MenuItem value={"Ninh Thuận"}> Ninh Thuận</MenuItem>
-                  <MenuItem value={"Phú Thọ"}> Phú Thọ</MenuItem>
-                  <MenuItem value={"Phú Yên"}> Phú Yên</MenuItem>
-                  <MenuItem value={"Quảng Bình"}> Quảng Bình</MenuItem>
-                  <MenuItem value={"Quảng Nam"}> Quảng Nam</MenuItem>
-                  <MenuItem value={"Quảng Ngãi"}> Quảng Ngãi</MenuItem>
-                  <MenuItem value={"Quảng Ninh"}> Quảng Ninh</MenuItem>
-                  <MenuItem value={"Quảng Trị"}> Quảng Trị</MenuItem>
-                  <MenuItem value={"Sóc Trăng"}> Sóc Trăng</MenuItem>
-                  <MenuItem value={"Sơn La"}> Sơn La</MenuItem>
-                  <MenuItem value={"Tây Ninh"}> Tây Ninh</MenuItem>
-                  <MenuItem value={"Thái Bình"}> Thái Bình</MenuItem>
-                  <MenuItem value={"Thái Nguyên"}> Thái Nguyên</MenuItem>
-                  <MenuItem value={"Thanh Hóa"}> Thanh Hóa</MenuItem>
-                  <MenuItem value={"Thừa Thiên Huế"}> Thừa Thiên Huế</MenuItem>
-                  <MenuItem value={"Tiền Giang"}> Tiền Giang</MenuItem>
-                  <MenuItem value={"Thành phố Hồ Chí Minh"}> Thành phố Hồ Chí Minh</MenuItem>
-                  <MenuItem value={"Trà Vinh"}> Trà Vinh</MenuItem>
-                  <MenuItem value={"Tuyên Quang"}> Tuyên Quang</MenuItem>
-                  <MenuItem value={"Vĩnh Long"}> Vĩnh Long</MenuItem>
-                  <MenuItem value={"Vĩnh Phúc"}> Vĩnh Phúc</MenuItem>
-                  <MenuItem value={"Yên Bái"}> Yên Bái</MenuItem>
                 </Select>
               </FormControl>
                </Grid>
