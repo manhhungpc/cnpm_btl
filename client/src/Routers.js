@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CreateJob from "./pages/CreateJob";
 import JobInfo from "./pages/JobInfo";
+import { ProtectedRoute } from "./utils/protectedRoute";
 
 export default function Routers() {
   return (
@@ -13,10 +14,31 @@ export default function Routers() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/jobs" element={<Job />} />
-        <Route path="/create-new-job" element={<CreateJob />} />
-        <Route path="/job/:id" element={<JobInfo />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/jobs"
+          element={
+            <ProtectedRoute>
+              <Job />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/create-new-job"
+          element={
+            <ProtectedRoute>
+              <CreateJob />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/job/:id"
+          element={
+            <ProtectedRoute>
+              <JobInfo />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
