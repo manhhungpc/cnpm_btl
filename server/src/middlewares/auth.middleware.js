@@ -76,10 +76,6 @@ export const signup = async (req, res, next) => {
     return res.status(400).json(responseError("Yêu cầu địa chỉ!"));
   }
 
-  if (!req.body.skills) {
-    return res.status(400).json(responseError("Yêu cầu ít nhất 1 kỹ năng!"));
-  }
-
   const user = await findUserByEmail(req.body.email);
   console.log(user);
 

@@ -8,7 +8,7 @@ const Users = database.Model.userModel;
 export const login = async (req, res) => {
   const payload = {
     id: req.body.id,
-    name: req.body.username,
+    name: req.body.name,
   };
   const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "5d" });
 
