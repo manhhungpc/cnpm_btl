@@ -7,6 +7,7 @@ import authRouter from "./src/routes/auth";
 import jobRoute from "./src/routes/job";
 import userRouter from "./src/routes/user";
 import * as errorHandler from "./src/routes/error";
+import reviewRouter from "./src/routes/review";
 
 const app = express();
 const PORT = 5000;
@@ -19,6 +20,7 @@ app.use(cors());
 app.use(APIRoute.ROOT, authRouter);
 app.use(APIRoute.ROOT, jobRoute);
 app.use(APIRoute.ROOT, userRouter);
+app.use(APIRoute.ROOT, reviewRouter);
 
 app.use("*", errorHandler.notFound);
 app.use(errorHandler.serverError);
