@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import styles from "../styles/Job.module.css";
@@ -8,22 +9,68 @@ import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
 import MenuItem from "@mui/material/MenuItem";
 import JobBar from "../components/JobBar";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import Paper from "@mui/material/Paper";
 import AddLocationSharpIcon from "@mui/icons-material/AddLocationSharp";
 import Link from "@mui/material/Link";
+import axios from "axios";
+import { api } from "../utils/api";
+import Pagination from "@mui/material/Pagination";
+import { useToken } from "../utils/useToken";
+import TextField from "@mui/material/TextField";
 
+const sortOption = [
+  {
+    label: "Mới nhất",
+    value: "updatedAt DESC",
+  },
+  {
+    label: "Khu vực quanh bạn",
+    value: "area ASC",
+  },
+  {
+    label: "Tiêu đề A-Z",
+    value: "title ASC",
+  },
+  {
+    label: "Tiêu đề Z-A",
+    value: "title DESC",
+  },
+  {
+    label: "Tiền lương tăng dần",
+    value: "fee ASC",
+  },
+  {
+    label: "Tiền lương giảm dần",
+    value: "fee DESC",
+  },
+];
 export default function Job() {
-  const [sort, setSort] = useState("lastest");
+  const [sort, setSort] = useState("updatedAt DESC");
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
 
-  const handleChange = (event) => {
-    setSort(event.target.value);
+  const [jobs, setJobs] = useState([]);
+  const [token] = useToken();
+
+  const headers = {
+    headers: { authorization: `Bearer ${token}` },
   };
+
+  const getRequestJob = async () => {
+    const sortBy = sort.split(" ")[0];
+    const order = sort.split(" ")[1];
+    const response = await axios.get(
+      `${api}/jobs?page=${page}&sort=${sortBy}&order=${order}`,
+      headers
+    );
+    setTotalPage(response.data.totalPage);
+    setJobs(response.data.data);
+  };
+
+  useEffect(() => {
+    getRequestJob();
+  }, [sort]);
 
   const RelatedJob = () => (
     <Stack spacing={2}>
@@ -50,49 +97,36 @@ export default function Job() {
         <Grid container spacing={2}>
           <Grid item xs={9}>
             <div className={styles.options}>
-              <Button variant="outlined" endIcon={<AddIcon />}>
+              <Button variant="outlined" href="/create-new-job" endIcon={<AddIcon />}>
                 Tạo 1 công việc mới của bạn
               </Button>
               <div className={styles.alignCenter}>
                 Sắp xếp theo: &nbsp;
                 <FormControl sx={{ minWidth: 120 }} size="small">
-                  <Select labelId="job-sort" value={sort} onChange={handleChange}>
-                    <MenuItem value="lastest">Mới nhất</MenuItem>
-                    <MenuItem value="area">Khu vực</MenuItem>
-                    <MenuItem value="title-asc">Tiêu đề A-Z</MenuItem>
-                    <MenuItem value="title-dec">Tiêu đề Z-A</MenuItem>
-                    <MenuItem value="fee-asc">Tiền lương</MenuItem>
+                  <Select value={sort} onChange={(e) => setSort(e.target.value)}>
+                    {sortOption.map((data) => (
+                      <MenuItem value={data.value}>{data.label}</MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </div>
             </div>
             <hr />
-            <JobBar />
-            <JobBar />
-            <JobBar />
+            {jobs.map((data) => (
+              <JobBar data={data} />
+            ))}
+            <Pagination
+              color="primary"
+              count={totalPage}
+              page={page}
+              onChange={(e, value) => setPage(value)}
+            />
           </Grid>
           <Grid item xs={3}>
-            <div>
-              <h3>Thành viên nổi bật</h3>
-              <hr />
-              <List sx={{ width: "100%" }}>
-                <ListItem alignItems="flex-start">
-                  <ListItemAvatar>
-                    <Avatar sx={{ bgcolor: "#000" }}>OP</Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary="BJohn Doe"
-                    secondary={
-                      <>
-                        <div>10 review</div>
-                        <div>Đã đăng: 10 công việc</div>
-                      </>
-                    }
-                  />
-                </ListItem>
-                <hr />
-              </List>
-            </div>
+            <TextField label="Tìm kiếm gì đó?" variant="outlined" fullWidth />
+            <Button style={{ marginTop: "10px" }} variant="contained" fullWidth>
+              Tìm
+            </Button>
             <div>
               <h3>Những công việc có thể bạn thích</h3>
               <hr />
@@ -101,6 +135,7 @@ export default function Job() {
           </Grid>
         </Grid>
       </div>
+      <Footer />
     </>
   );
 }

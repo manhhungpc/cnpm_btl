@@ -25,3 +25,15 @@
   text-decoration: underline;
   color: #b43a05;
 }
+
+.disable {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.unavailable {
+  margin-bottom: 0;
+  color: #b40505;
+  font-weight: 600;
+}

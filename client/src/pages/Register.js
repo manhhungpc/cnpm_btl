@@ -56,8 +56,7 @@ export default function Register() {
       setToken(token);
       navigate("/");
     } catch (err) {
-      setError(err.response.data);
-      //console.log(err.response);
+      setError(err.response.data.error);
     }
   };
 
@@ -160,11 +159,11 @@ export default function Register() {
                       <InputLabel>Tỉnh/Thành phố</InputLabel>
                       <Select
                         label="Tỉnh/Thành phố"
-                        defaultValue="thanh_pho_ha_noi"
+                        defaultValue="Thành phố Hà Nội"
                         onChange={(e) => setArea(e.target.value)}
                       >
                         {choiceArea.map((data) => (
-                          <MenuItem value={data.codename}> {data.name}</MenuItem>
+                          <MenuItem value={data.name}>{data.name}</MenuItem>
                         ))}
                       </Select>
                     </FormControl>

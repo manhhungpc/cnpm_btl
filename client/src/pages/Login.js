@@ -36,8 +36,7 @@ export default function Login() {
       setToken(token);
       navigate("/");
     } catch (err) {
-      setError(err.response.data);
-      //console.log(err.response);
+      setError(err.response.data.error);
     }
   };
   return (
