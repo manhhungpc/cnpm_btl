@@ -11,6 +11,7 @@ const Users = (sequelize, Sequelize) => {
     password: Sequelize.TEXT,
     phone_number: Sequelize.INTEGER,
     address: Sequelize.TEXT + " CHARSET utf8 COLLATE utf8_general_ci",
+    area: Sequelize.TEXT + " CHARSET utf8 COLLATE utf8_general_ci",
     skills: Sequelize.STRING,
     votes: Sequelize.INTEGER,
   });

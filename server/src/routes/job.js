@@ -9,6 +9,8 @@ const jobRoute = express.Router();
 
 jobRoute.get(APIRoute.jobs, authMiddleware.validateToken, jobController.getAllJobs);
 
+jobRoute.get(APIRoute.job_id, authMiddleware.validateToken, jobController.getJobById);
+
 jobRoute.post(
   APIRoute.jobs,
   authMiddleware.validateToken,

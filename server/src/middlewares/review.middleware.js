@@ -20,6 +20,20 @@ export const getReviewByJobId = async (req, res, next) => {
   next();
 };
 
+export const getReviewByUserId = async (req, res, next) => {
+  const reviews = await Review.findAll({
+    where: {
+      target: "user " + req.params.target_user_id,
+    },
+  });
+
+  if (!reviews) {
+    return res.status(400).json(responseError("Không có bình luận về phần này"));
+  }
+
+  next();
+};
+
 export const newJobReview = async (req, res, next) => {
   if (!req.body.target) {
     return res.status(400).json(responseError("Thiếu id việc làm"));

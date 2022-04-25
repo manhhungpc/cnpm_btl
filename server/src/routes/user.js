@@ -16,6 +16,12 @@ userRouter.put(
 
 userRouter.get(APIRoute.users, authMiddleware.validateToken, catchAsync(userController.getUsers));
 
+userRouter.get(
+  APIRoute.user_id,
+  authMiddleware.validateToken,
+  catchAsync(userController.getUserById)
+);
+
 userRouter.delete(
   APIRoute.user_id,
   authMiddleware.validateToken,

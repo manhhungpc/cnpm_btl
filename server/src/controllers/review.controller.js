@@ -13,6 +13,16 @@ export const getReviewByJobId = async (req, res) => {
   return res.status(200).json(responseSuccess(reviews));
 };
 
+export const getReviewByUserId = async (req, res) => {
+  const reviews = await Review.findAll({
+    where: {
+      target: "user " + req.params.target_user_id,
+    },
+  });
+
+  return res.status(200).json(responseSuccess(reviews));
+};
+
 export const newJobReview = async (req, res) => {
   const newReview = await Review.create({ ...req.body });
 

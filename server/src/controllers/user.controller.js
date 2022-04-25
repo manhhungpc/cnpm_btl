@@ -33,6 +33,12 @@ export const getUsers = async (req, res) => {
   return res.status(200).json(responseFormat);
 };
 
+export const getUserById = async (req, res) => {
+  const data = await findUserById(req.params.id, ["password"]);
+
+  return res.status(200).json(responseSuccess(data));
+};
+
 export const updateProfile = async (req, res) => {
   const exclude = ["password", "votes"];
   const updateColumn = Object.keys(User.rawAttributes).filter((col) => !exclude.includes(col));

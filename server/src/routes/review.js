@@ -14,6 +14,13 @@ reviewRouter.get(
   catchAsync(reviewController.getReviewByJobId)
 );
 
+reviewRouter.get(
+  APIRoute.review_user,
+  authMiddleware.validateToken,
+  reviewMiddleware.getReviewByUserId,
+  catchAsync(reviewController.getReviewByUserId)
+);
+
 reviewRouter.post(
   APIRoute.review_job,
   authMiddleware.validateToken,
@@ -23,7 +30,7 @@ reviewRouter.post(
 
 reviewRouter.post(
   APIRoute.review_user,
-  //authMiddleware.validateToken,
+  authMiddleware.validateToken,
   reviewMiddleware.newUserReview,
   catchAsync(reviewController.newUserReview)
 );
