@@ -1,0 +1,146 @@
+body {
+    background-image: linear-gradient(#0D47A1, #81D4FA);
+    background-repeat: no-repeat;
+    color: #000;
+    overflow-x: hidden
+}
+
+.card1 {
+    border-radius: 10px;
+    /* padding-left: -20px;
+    padding-right: 0px; */
+    /* margin-top: 30px; */
+    box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+    -webkit-box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+    -moz-box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+    -ms-box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* min-width: 0; */
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    /* border: 1px solid #f2f4f9;
+    border-radius: .25rem; */
+}
+
+div .circle_img {
+    width: 170px;
+    height: 170px;
+    border-radius: 100%;
+    /* position: relative; */
+}
+
+.rating_on_img {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: #3d007e;
+}
+
+.head_rate {
+    font-size: 60px;
+    margin-bottom: 0px;
+}
+
+.subhead_rate {
+    font-size: 19px;
+    font-weight: normal;
+}
+
+.heading0 {
+    margin-top: -110px;
+}
+
+.rating_label {
+    /* font-weight: bold; */
+    line-height: 40px;
+    white-space: nowrap;
+}
+
+.rating_bar {
+    width: 250px;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.bar_container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer
+}
+
+.bar_5 {
+    width: 64%;
+    height: 10px;
+    background-color: #FBC02D;
+    border-radius: 20px
+}
+
+.bar_4 {
+    width: 16%;
+    height: 10px;
+    background-color: #FBC02D;
+    border-radius: 20px
+}
+
+.bar_3 {
+    width: 16%;
+    height: 10px;
+    background-color: #FBC02D;
+    border-radius: 20px
+}
+
+.bar_2 {
+    width: 0%;
+    height: 10px;
+    background-color: #FBC02D;
+    border-radius: 20px
+}
+
+.bar_1 {
+    width: 0%;
+    height: 10px;
+    background-color: #FBC02D;
+    border-radius: 20px
+}
+
+.star_active {
+    color: #FBC02D;
+    margin-top: 50px;
+    margin-bottom: 10px
+}
+
+.star_active:hover {
+    color: #F9A825;
+    cursor: pointer
+}
+
+.review_heading {
+    font-size: 24px
+}
+
+.review_desc {
+    font-size: 15px
+}
+
+.author {
+    font-size: 20px;
+    margin-bottom: 0
+}
+
+.review_date {
+    color: grey;
+    margin-bottom: 50px
+}
+
+.head_card {
+    font-weight: bold;
+    color: #3d007e;
+}
