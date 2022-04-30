@@ -8,38 +8,44 @@ import SendIcon from "@mui/icons-material/Send";
 import styles from "../styles/ReviewCard.module.css";
 import Comment from "./Comment";
 
-export default function ReviewCard() {
+export default function ReviewCard({ owner }) {
   const [value, setValue] = React.useState(3);
   return (
     <>
       <Card variant="outlined">
         <CardContent>
-          <h3>Viết đánh giá:</h3>
-          <span>Bình luận: </span>
-          <TextField variant="outlined" multiline rows={4} fullWidth size="small" />
-          <div className={styles.rating}>
-            <span>Đánh giá: </span>
-            <Rating
-              value={value}
-              onChange={(e) => {
-                setValue(e.target.value);
-              }}
-            />
-          </div>
-          <div className={styles.pleasure}>
-            <span>Bạn có hài lòng không?</span>
-            <Button variant="contained" size="small">
-              Có
-            </Button>
-            <Button variant="outlined" size="small">
-              Không
-            </Button>
-          </div>
-          <div className={styles.sendBtn}>
-            <Button variant="contained" endIcon={<SendIcon />}>
-              Gửi
-            </Button>
-          </div>
+          {!owner ? (
+            <>
+              <h3>Viết đánh giá:</h3>
+              <span>Bình luận: </span>
+              <TextField variant="outlined" multiline rows={4} fullWidth size="small" />
+              <div className={styles.rating}>
+                <span>Đánh giá: </span>
+                <Rating
+                  value={value}
+                  onChange={(e) => {
+                    setValue(e.target.value);
+                  }}
+                />
+              </div>
+              <div className={styles.pleasure}>
+                <span>Bạn có hài lòng không?</span>
+                <Button variant="contained" size="small">
+                  Có
+                </Button>
+                <Button variant="outlined" size="small">
+                  Không
+                </Button>
+              </div>
+              <div className={styles.sendBtn}>
+                <Button variant="contained" endIcon={<SendIcon />}>
+                  Gửi
+                </Button>
+              </div>
+            </>
+          ) : (
+            ""
+          )}
           <hr />
           <Comment />
           <Comment />

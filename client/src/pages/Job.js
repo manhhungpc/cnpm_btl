@@ -25,7 +25,7 @@ const sortOption = [
     value: "updatedAt DESC",
   },
   {
-    label: "Khu vực quanh bạn",
+    label: "Khu vực",
     value: "area ASC",
   },
   {
@@ -49,6 +49,7 @@ export default function Job() {
   const [sort, setSort] = useState("updatedAt DESC");
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
+  const [search, setSearch] = useState("");
 
   const [jobs, setJobs] = useState([]);
   const [token] = useToken();
@@ -61,7 +62,7 @@ export default function Job() {
     const sortBy = sort.split(" ")[0];
     const order = sort.split(" ")[1];
     const response = await axios.get(
-      `${api}/jobs?page=${page}&sort=${sortBy}&order=${order}`,
+      `${api}/jobs?page=${page}&sort=${sortBy}&order=${order}&search=${search}`,
       headers
     );
     setTotalPage(response.data.totalPage);
@@ -112,6 +113,7 @@ export default function Job() {
               </div>
             </div>
             <hr />
+            {!jobs.length ? <h3>Không tìm thấy với từ khóa này. Bạn thử từ khác nhé!</h3> : ""}
             {jobs.map((data) => (
               <JobBar data={data} />
             ))}
@@ -123,8 +125,18 @@ export default function Job() {
             />
           </Grid>
           <Grid item xs={3}>
-            <TextField label="Tìm kiếm gì đó?" variant="outlined" fullWidth />
-            <Button style={{ marginTop: "10px" }} variant="contained" fullWidth>
+            <TextField
+              label="Tìm kiếm gì đó?"
+              variant="outlined"
+              fullWidth
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <Button
+              style={{ marginTop: "10px" }}
+              variant="contained"
+              fullWidth
+              onClick={getRequestJob}
+            >
               Tìm
             </Button>
             <div>

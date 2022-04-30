@@ -38,18 +38,18 @@ function stringAvatar(name) {
 }
 
 export default function JobBar({ data }) {
-  console.log(data);
+  const linkInfo = `/job/${data.id}`;
   return (
     <Card className={styles.wrapper}>
-      <CardActionArea href="#" className={data.available ? "" : styles.disable}>
+      <CardActionArea href={linkInfo} className={data.available ? "" : styles.disable}>
         <CardContent>
           <Grid container>
-            <Grid xs={7}>
+            <Grid xs={6}>
               <h2>{data.title} </h2>
               <p className={styles.description}>{data.content}</p>
               {data.available ? "" : <p className={styles.unavailable}>Đã có người nhận</p>}
             </Grid>
-            <Grid xs={5}>
+            <Grid xs={6}>
               <p>
                 Người đăng:{" "}
                 <a className={styles.link} href="/user">
@@ -59,7 +59,14 @@ export default function JobBar({ data }) {
               </p>
               <p>Kỹ năng: {data.type - 1 ? "Chuyên nghiệp" : "Thường"}</p>
               <div className={styles.details}>
-                <div>Tiền công: {parseInt(data.fee, 10) ? `${data.fee}k` : "Free"}</div>
+                <div>
+                  Tiền công:{" "}
+                  <b>
+                    {parseInt(data.fee, 10)
+                      ? `${data.fee.replace(/\B(?=(\d{3})+(?!\d))/g, ".")}vnđ`
+                      : "Free"}
+                  </b>
+                </div>
                 <a className={styles.link} href="/location">
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <AddLocationSharpIcon />
