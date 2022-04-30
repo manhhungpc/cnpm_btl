@@ -45,7 +45,7 @@ export const getAllJobs = async (req, res) => {
 };
 
 export const getJobById = async (req, res) => {
-  const data = await findJobById(req.params.id);
+  const data = await findJobById(req.params.id, ["username", "email"]);
 
   return res.status(200).json(responseSuccess(data));
 };
@@ -66,6 +66,7 @@ export const updateJob = async (req, res) => {
   });
 
   const jobUpdate = await findJobById(req.params.id);
+  jobUpdate.notif = JSON.parse(jobUpdate.notif);
 
   return res.status(200).json(responseSuccess(jobUpdate));
 };
@@ -80,10 +81,14 @@ export const deleteJob = async (req, res) => {
   return res.status(200).json(responseSuccess("Đã xóa"));
 };
 
-const findJobById = async (id) => {
+const findJobById = async (id, attributes) => {
   return await Job.findOne({
     where: {
       id: id,
+    },
+    include: {
+      model: User,
+      attributes: attributes,
     },
   });
 };

@@ -12,9 +12,15 @@ const Jobs = (sequelize, Sequelize) => {
     area: Sequelize.STRING,
     contact: Sequelize.STRING,
     type: Sequelize.INTEGER,
-    time_required: Sequelize.DATE,
+    time_required: {
+      type: Sequelize.DATE,
+      get() {
+        return this.getDataValue("time_required").toLocaleString("en-GB", { timeZone: "UTC" });
+      },
+    },
     available: Sequelize.BOOLEAN,
     fee: Sequelize.STRING,
+    notif: Sequelize.STRING,
   });
 
   return Job;

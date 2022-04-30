@@ -67,9 +67,26 @@ export const createJob = async (req, res, next) => {
 
 export const updateJob = async (req, res, next) => {
   const job = await findJobById(req.params.id);
-  if (req.body.user_id !== job.user_id) {
+  const requestLength = Object.keys(req.body).length;
+  const allow = Object.keys(req.body).find((key) => key === "notif");
+
+  if (req.body.user_id !== job.user_id && requestLength > 2 && !allow) {
     return res.status(403).json(responseError("Không có quyền thay đổi"));
   }
+
+  let arrNotif = [];
+  if (job.notif) {
+    arrNotif = JSON.parse(job.notif);
+  }
+  arrNotif.push(req.body.notif);
+  req.body.notif = arrNotif;
+  req.body.notif = JSON.stringify(req.body.notif);
+  /* From User table
+  notif:{
+    id(user): UID,
+    username: name,
+    phone_number: 0123...
+  } */
 
   //reformat data
   req.body = {
@@ -84,7 +101,8 @@ export const updateJob = async (req, res, next) => {
     time_required: req.body.time_required ? req.body.time_required : job.time_required,
     available: req.body.available ? req.available : job.available,
     fee: req.body.fee ? req.body.fee : job.fee,
-    user_id: req.body.user_id,
+    notif: req.body.notif,
+    user_id: job.user_id,
   };
 
   next();
