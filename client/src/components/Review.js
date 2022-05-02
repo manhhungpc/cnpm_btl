@@ -64,10 +64,10 @@ const Review = () => {
           <i className={Styles.info}>"{text}"</i>
           <div className={Styles.btn_container}>
             <button className={Styles.prev_btn} onClick={prevPerson}>
-              <img className={Styles.btn_slide} src="./left-arrow.png" />
+              <img className={Styles.btn_slide} src="/left-arrow.png" />
             </button>
             <button className={Styles.next_btn} onClick={nextPerson}>
-              <img className={Styles.btn_slide} src="./right-arrow.png" />
+              <img className={Styles.btn_slide} src="/right-arrow.png" />
             </button>
           </div>
         </article>

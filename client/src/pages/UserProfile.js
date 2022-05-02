@@ -6,7 +6,7 @@ import Infor from "../components/Infor";
 import Offers from "../components/Offers";
 import Review from "../components/Review";
 import Rating from "../components/RatingChart";
-import Job from "../components/JobBar";
+import JobBar from "../components/JobBar";
 
 const getBsClass = (classNames = "") =>
   classNames
@@ -15,7 +15,7 @@ const getBsClass = (classNames = "") =>
     .join(" ")
     .trim();
 
-export default function Home() {
+export default function UserProfile() {
   return (
     <div className={Styles.main_container}>
       <div className={getBsClass("container")}>
@@ -24,14 +24,12 @@ export default function Home() {
             <div className={getBsClass("col-12") + " " + Styles.grid_margin}>
               <div className={Styles.profile_header}>
                 <div className={Styles.cover}>
-                  <img className={Styles.cover_photo} src={"./cover1.png"} />
+                  <img className={Styles.cover_photo} src="/cover1.png" />
                   <div
                     className={
                       Styles.cover_body +
                       " " +
-                      getBsClass(
-                        "d-flex justify-content-between align-items-center"
-                      )
+                      getBsClass("d-flex justify-content-between align-items-center")
                     }
                   >
                     <div>
@@ -42,9 +40,7 @@ export default function Home() {
                       />
                       <span className={Styles.profile_name}>
                         M-TP
-                        <button
-                          className={getBsClass("btn btn-link shadow-none")}
-                        >
+                        <button className={getBsClass("btn btn-link shadow-none")}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="17"
@@ -66,40 +62,28 @@ export default function Home() {
                   <div className={getBsClass("row")}>
                     <div className={getBsClass("col- col-lg-3")}>
                       <div className={getBsClass("count-data text-center")}>
-                        <h6
-                          className={getBsClass("count h2")}
-                          data-to="500"
-                          data-speed="500"
-                        >
+                        <h6 className={getBsClass("count h2")} data-to="500" data-speed="500">
                           50
                         </h6>
-                        <p className={getBsClass("m-0px font-w-600")}>
-                          Lượt đánh giá tích cực
-                        </p>
+                        <p className={getBsClass("m-0px font-w-600")}>Lượt đánh giá tích cực</p>
                       </div>
                     </div>
                     <div className={getBsClass("col-6 col-lg-3")}>
                       <div className={getBsClass("count-data text-center")}>
                         <h6 className={getBsClass("count h2")}>20</h6>
-                        <p className={getBsClass("m-0px font-w-600")}>
-                          Công việc đã hoàn thành
-                        </p>
+                        <p className={getBsClass("m-0px font-w-600")}>Công việc đã hoàn thành</p>
                       </div>
                     </div>
                     <div className={getBsClass("col-6 col-lg-3")}>
                       <div className={getBsClass("count-data text-center")}>
                         <h6 className={getBsClass("count h2")}>90h</h6>
-                        <p className={getBsClass("m-0px font-w-600")}>
-                          Làm việc
-                        </p>
+                        <p className={getBsClass("m-0px font-w-600")}>Làm việc</p>
                       </div>
                     </div>
                     <div className={getBsClass("col-6 col-lg-3")}>
                       <div className={getBsClass("count-data text-center")}>
                         <h6 className={getBsClass("count h2")}>100</h6>
-                        <p className={getBsClass("m-0px font-w-600")}>
-                          Lượt liên hệ
-                        </p>
+                        <p className={getBsClass("m-0px font-w-600")}>Lượt liên hệ</p>
                       </div>
                     </div>
                   </div>
@@ -108,17 +92,15 @@ export default function Home() {
             </div>
           </div>
           <div className={getBsClass("row") + " " + Styles.profilebody}>
-            <div
-              className={getBsClass(
-                "d-none d-md-block col-md-5 col-xl-4 left-wrapper"
-              )}
-            >
+            <div className={getBsClass("d-none d-md-block col-md-5 col-xl-4 left-wrapper")}>
               <Infor />
               <Offers />
             </div>
             <div className={getBsClass("col-md-8 col-xl-8 right-wrapper")}>
-              <Review />
-              <Job />
+              {/* <Review /> */}
+              <b style={{ fontSize: "25px" }}>Những công việc mà bạn đã tạo</b>
+              <JobBar />
+              <hr />
               <Rating />
             </div>
           </div>

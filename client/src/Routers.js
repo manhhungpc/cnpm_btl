@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Job from "./pages/Job";
 import Login from "./pages/Login";
 import CreateJob from "./pages/CreateJob";
+import UserProfile from "./pages/UserProfile";
 
 export default function Routers() {
   return (
@@ -13,6 +14,7 @@ export default function Routers() {
         <Route path="/login" element={<Login />} />
         <Route path="/jobs" element={<Job />} />
         <Route path="/create-new-job" element={<CreateJob />} />
+        <Route path="/user/:id" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
   );
