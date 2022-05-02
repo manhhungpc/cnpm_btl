@@ -32,7 +32,7 @@ export default function Routers() {
           }
         />
         <Route
-          path="/job/:id"
+          path="/job/:job_id"
           element={
             <ProtectedRoute>
               <JobInfo />

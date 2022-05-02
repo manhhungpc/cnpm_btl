@@ -31,7 +31,7 @@ export default function JobInfo() {
   };
 
   const getJobInfo = async () => {
-    const job = await axios.get(`${api}/job/${idJob.id}`, headers);
+    const job = await axios.get(`${api}/job/${idJob.job_id}`, headers);
     setInfo(job.data.data);
     console.log(job.data);
     if (user.id === job.data.data.user_id) {
