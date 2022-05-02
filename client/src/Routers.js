@@ -5,6 +5,7 @@ import Job from "./pages/Job";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CreateJob from "./pages/CreateJob";
+import UserProfile from "./pages/UserProfile";
 import JobInfo from "./pages/JobInfo";
 import { ProtectedRoute } from "./utils/protectedRoute";
 
@@ -36,6 +37,14 @@ export default function Routers() {
           element={
             <ProtectedRoute>
               <JobInfo />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user/:id"
+          element={
+            <ProtectedRoute>
+              <UserProfile />
             </ProtectedRoute>
           }
         />
