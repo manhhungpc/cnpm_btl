@@ -11,3 +11,8 @@
 .info {
   margin-top: 20px;
 }
+
+.error {
+  color: #ff3333;
+  margin: 0;
+}

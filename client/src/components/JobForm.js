@@ -1,60 +1,110 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import styles from "../styles/JobForm.module.css";
+import axios from "axios";
+import { api } from "../utils/api";
+import { useToken } from "../utils/useToken";
+import { useUser } from "../utils/useUser";
+import { useNavigate } from "react-router-dom";
 
-const areas = [
-  {
-    value: "Hanoi",
-    label: "Hà Nội",
-  },
-  {
-    value: "Hoabinh",
-    label: "Hòa Bình",
-  },
-  {
-    value: "Haiduong",
-    label: "Hải Dương",
-  },
-];
 const types = [
   {
-    value: 0,
+    value: 1,
     label: "Thường",
   },
   {
-    value: 1,
+    value: 2,
     label: "Chuyên nghiệp",
   },
 ];
 
 export default function JobForm() {
-  const [area, setArea] = useState("Hoabinh");
-  const [type, setType] = useState(0);
-  const isDisabled = type ? false : true;
+  const [choiceArea, setChoiceArea] = useState([]);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [requiredSkill, setRequiredSkill] = useState("");
+  const [contact, setContact] = useState("");
+  const [area, setArea] = useState("");
+  const [time, setTime] = useState("");
+  const [type, setType] = useState(1);
+  const [fee, setFee] = useState(0);
 
-  const handleChangeArea = (event) => {
-    setArea(event.target.value);
+  const [error, setError] = useState("");
+  const user = useUser();
+  const [token] = useToken();
+  let navigate = useNavigate();
+  const isDisabled = type - 1 ? false : true;
+
+  console.log(type);
+
+  useEffect(() => {
+    const fetchArea = async () => {
+      const areas = await axios.get("https://provinces.open-api.vn/api/?depth=1");
+      setChoiceArea(areas.data);
+    };
+    fetchArea();
+  }, []);
+
+  const data = {
+    title: title,
+    content: content,
+    skill_required: requiredSkill,
+    area: area,
+    contact: contact,
+    time_required: time,
+    type: type,
+    fee: fee,
+    user_id: user.id,
   };
 
-  const handleChangeType = (event) => {
-    setType(event.target.value);
+  const headers = {
+    headers: { authorization: `Bearer ${token}` },
+  };
+
+  const onCreateJob = async () => {
+    try {
+      if (type === 2 && !fee) {
+        setError("Hãy thêm phí trả cho loại việc chuyên nghiệp nhé!");
+        return;
+      }
+      const res = await axios.post(`${api}/jobs`, data, headers);
+      console.log(res.data);
+      navigate("/jobs");
+    } catch (err) {
+      setError(err.response.data.error);
+    }
   };
 
   return (
     <>
       <Card variant="outlined">
         <CardContent>
+          {error ? <p className={styles.error}>{error}</p> : ""}
           <div className={styles.title}>
             <span>Tiêu đề: &nbsp;</span>
-            <TextField size="small" variant="outlined" />
+            <TextField
+              size="small"
+              style={{ width: "85%" }}
+              variant="outlined"
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
           <div>
-            <div>Mô tả công việc:</div>
-            <TextField size="small" multiline fullWidth rows={5} />
+            <div className={styles.info}>Mô tả công việc:</div>
+            <TextField
+              size="small"
+              multiline
+              fullWidth
+              rows={5}
+              onChange={(e) => setContent(e.target.value)}
+            />
           </div>
 
           <div className={styles.info}>Thông tin chi tiết công việc</div>
@@ -64,22 +114,26 @@ export default function JobForm() {
             variant="outlined"
             fullWidth
             margin="normal"
+            onChange={(e) => setRequiredSkill(e.target.value)}
           />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <TextField label="Số điện thoại liên lạc" variant="outlined" />
             <TextField
-              select
-              label="Khu vực"
-              value={area}
-              onChange={handleChangeArea}
-              className={styles.inputArea}
-            >
-              {areas.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
+              label="Số điện thoại liên lạc"
+              variant="outlined"
+              onChange={(e) => setContact(e.target.value)}
+            />
+            <FormControl style={{ width: "48%" }}>
+              <InputLabel>Khu vực</InputLabel>
+              <Select
+                label="Khu vực"
+                defaultValue="Thành phố Hà Nội"
+                onChange={(e) => setArea(e.target.value)}
+              >
+                {choiceArea.map((data) => (
+                  <MenuItem value={data.name}>{data.name}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </div>
           <TextField
             label="Thời gian giúp đỡ"
@@ -88,21 +142,21 @@ export default function JobForm() {
             variant="outlined"
             fullWidth
             margin="normal"
+            onChange={(e) => setTime(e.target.value)}
           />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <TextField
-              select
-              label="Loại kỹ năng"
-              value={type}
-              onChange={handleChangeType}
-              style={{ width: "48%" }}
-            >
-              {types.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
+            <FormControl style={{ width: "48%" }}>
+              <InputLabel>Loại kỹ năng</InputLabel>
+              <Select
+                label="Loại kỹ năng"
+                defaultValue={1}
+                onChange={(e) => setType(e.target.value)}
+              >
+                {types.map((data) => (
+                  <MenuItem value={data.value}>{data.label}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
 
             <TextField
               disabled={isDisabled}
@@ -110,13 +164,14 @@ export default function JobForm() {
               helperText="Chỉ yêu cầu đối với loại kỹ năng chuyên nghiệp"
               variant="outlined"
               style={{ width: "50%" }}
+              onChange={(e) => setFee(e.target.value)}
             />
           </div>
 
-          <Button variant="contained" fullWidth style={{ margin: "10px 0" }}>
+          <Button variant="contained" fullWidth style={{ margin: "10px 0" }} onClick={onCreateJob}>
             Tạo mới
           </Button>
-          <Button variant="outlined" fullWidth>
+          <Button variant="outlined" fullWidth href="/jobs">
             Hủy bỏ
           </Button>
         </CardContent>

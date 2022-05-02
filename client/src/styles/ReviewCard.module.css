@@ -1,0 +1,18 @@
+.rating {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+.pleasure {
+  width: 38%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.sendBtn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
