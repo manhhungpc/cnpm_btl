@@ -2,7 +2,6 @@ import React from "react";
 import Styles from "../styles/Profile.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import bs from "bootstrap-css-module";
-import Album from "../components/Album";
 import Infor from "../components/Infor";
 import Offers from "../components/Offers";
 import Review from "../components/Review";
@@ -25,10 +24,7 @@ export default function Home() {
             <div className={getBsClass("col-12") + " " + Styles.grid_margin}>
               <div className={Styles.profile_header}>
                 <div className={Styles.cover}>
-                  <img
-                    className={Styles.cover_photo}
-                    src={process.env.PUBLIC_URL + "cover.jpg"}
-                  />
+                  <img className={Styles.cover_photo} src={"./cover1.png"} />
                   <div
                     className={
                       Styles.cover_body +
@@ -41,7 +37,7 @@ export default function Home() {
                     <div>
                       <img
                         className={Styles.profile_pic}
-                        src="https://bit.ly/3vmrEwU"
+                        src="https://therichpost.com/wp-content/uploads/2021/03/avatar1.png"
                         alt="profile"
                       />
                       <span className={Styles.profile_name}>
@@ -114,23 +110,16 @@ export default function Home() {
           <div className={getBsClass("row") + " " + Styles.profilebody}>
             <div
               className={getBsClass(
-                "d-none d-md-block col-md-4 col-xl-3 left-wrapper"
+                "d-none d-md-block col-md-5 col-xl-4 left-wrapper"
               )}
             >
               <Infor />
-              <Album />
+              <Offers />
             </div>
-            <div className={getBsClass("col-md-8 col-xl-6 middle-wrapper")}>
-              <Job />
+            <div className={getBsClass("col-md-8 col-xl-8 right-wrapper")}>
               <Review />
-            </div>
-            <div
-              className={getBsClass("d-none d-xl-block col-xl-3 right-wrapper")}
-            >
-              <div className={getBsClass("row")}>
-                <Rating />
-                <Offers />
-              </div>
+              <Job />
+              <Rating />
             </div>
           </div>
         </div>

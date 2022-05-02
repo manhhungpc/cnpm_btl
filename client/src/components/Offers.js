@@ -15,7 +15,7 @@ export default function Offers() {
     <div className={getBsClass("col-md-12")+" "+ Styles.grid_margin}>
       <div className={Styles.card +" "+ Styles.rounded}>
         <div className={getBsClass("card-body")}>
-          <h3 className={getBsClass("card-title mb-3") +" "+Styles.head_card}>Kĩ năng</h3>
+          <h3 className={getBsClass("card-title mb-3") +" "+Styles.head_card}>Kĩ năng/Chuyên môn</h3>
           
           <div
             className={getBsClass("d-flex justify-content-between mb-2 pb-2 border-bottom")}
@@ -25,7 +25,7 @@ export default function Offers() {
             >
               <img
                 className={Styles.img_xs + " " + Styles.rounded_circle}
-                src="./electrical.png"
+                src="./electric.png"
                 alt=""
               />
               <div className={getBsClass("ml-2")}>
@@ -60,7 +60,7 @@ export default function Offers() {
             >
               <img
                 className={Styles.img_xs + " " + Styles.rounded_circle}
-                src="./delivery.png"
+                src="./deliver.png"
                 alt=""
               />
               <div className={getBsClass("ml-2")}>
@@ -95,7 +95,7 @@ export default function Offers() {
             >
               <img
                 className={Styles.img_xs + " " + Styles.rounded_circle}
-                src="./shipper.png"
+                src="./ship.png"
                 alt=""
               />
               <div className={getBsClass("ml-2")}>

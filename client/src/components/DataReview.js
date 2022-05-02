@@ -15,7 +15,7 @@ const reviews = [
       image:
         'https://therichpost.com/wp-content/uploads/2021/03/avatar2.png',
       text:
-        "Tôi thấy Helpy là một trang web hỗ trợ rất nhiều cho mọi người có nhu cầu tìm người giúp việc. Hi vọng rằng Helpy sẽ thu hút được thêm nhiều người dùng và có một cộng đồng ngày một lớn mạnh hơn nữa trong tương lai.",
+        "Tôi thấy Helpy là một trang web hỗ trợ rất nhiều cho mọi người có nhu cầu tìm người giúp việc. Hi vọng rằng Helpy sẽ thu hút được thêm nhiều người dùng và có một cộng đồng ngày một lớn mạnh hơn nữa trong tương lai!",
     },
     {
       id: 3,

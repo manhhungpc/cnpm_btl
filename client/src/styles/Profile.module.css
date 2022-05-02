@@ -55,10 +55,10 @@
 }
 
 .profile_page .profile_header .cover .cover_body .profile_name {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
   margin-left: 17px;
-  color: #3d007e;
+  color: #fff;
 }
 
 .profile_page .profile_header .header_links {
