@@ -3,7 +3,12 @@
 }
 
 .main_container {
-  background: linear-gradient(16deg, rgba(157, 152, 245, 1) 0%, rgba(79, 118, 156, 0.8606793059020483) 46%, rgba(0, 212, 255, 1) 100%);
+  background: linear-gradient(
+    16deg,
+    rgba(157, 152, 245, 1) 0%,
+    rgba(79, 118, 156, 0.8606793059020483) 46%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }
 
 .profile_page .profile_header {
@@ -13,11 +18,11 @@
 
 .profile_page .profile_header .cover {
   position: relative;
-  border-radius: .25rem .25rem 0 0;
+  border-radius: 0.25rem 0.25rem 0 0;
 }
 
 .profile_page .profile_header .cover {
-  border-radius: .25rem .25rem 0 0;
+  border-radius: 0.25rem 0.25rem 0 0;
   width: 100%;
   height: 250px;
 }
@@ -68,14 +73,14 @@
   -webkit-justify-content: center;
   justify-content: center;
   background: rgb(255, 255, 255);
-  border-radius: 0 0 .25rem .25rem;
+  border-radius: 0 0 0.25rem 0.25rem;
 }
 
 .img_xs {
   width: 60px;
   height: 60px;
 }
-    
+
 img {
   vertical-align: middle;
   border-style: none;
@@ -98,7 +103,7 @@ img {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid #f2f4f9;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .rounded {

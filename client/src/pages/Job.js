@@ -104,7 +104,7 @@ export default function Job() {
               <div className={styles.alignCenter}>
                 Sắp xếp theo: &nbsp;
                 <FormControl sx={{ minWidth: 120 }} size="small">
-                  <Select value={sort} onChange={(e) => setSort(e.target.value)}>
+                  <Select value={sort} onChange={(e) => setSort(e.target.value)} label=" ">
                     {sortOption.map((data) => (
                       <MenuItem value={data.value}>{data.label}</MenuItem>
                     ))}

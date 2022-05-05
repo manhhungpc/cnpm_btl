@@ -92,6 +92,7 @@ export default function JobForm() {
             <TextField
               size="small"
               style={{ width: "85%" }}
+              label=" "
               variant="outlined"
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -102,6 +103,7 @@ export default function JobForm() {
               size="small"
               multiline
               fullWidth
+              label=" "
               rows={5}
               onChange={(e) => setContent(e.target.value)}
             />

@@ -8,6 +8,9 @@
   width: 85%;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: arial;
+  color: #808089;
+  font-weight: 600;
 }
 
 .details {

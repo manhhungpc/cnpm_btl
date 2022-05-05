@@ -71,7 +71,7 @@ export default function Navbar() {
               }}
             >
               <List style={{ width: "100%" }}>
-                <ListItemButton component="a" href="#simple-list">
+                <ListItemButton component="a" href={`/user/${user.id}`}>
                   Xem thông tin cá nhân
                 </ListItemButton>
                 <ListItemButton onClick={onLogout}>Đăng xuất</ListItemButton>

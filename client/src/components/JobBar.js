@@ -38,6 +38,7 @@ function stringAvatar(name) {
 }
 
 export default function JobBar({ data }) {
+  console.log(data);
   const linkInfo = `/job/${data.id}`;
   return (
     <Card className={styles.wrapper}>
@@ -45,14 +46,14 @@ export default function JobBar({ data }) {
         <CardContent>
           <Grid container>
             <Grid xs={6}>
-              <h2>{data.title} </h2>
-              <p className={styles.description}>{data.content}</p>
+              <h3>{data.title} </h3>
+              <small className={styles.description}>{data.content}</small>
               {data.available ? "" : <p className={styles.unavailable}>Đã có người nhận</p>}
             </Grid>
             <Grid xs={6}>
               <p>
                 Người đăng:{" "}
-                <a className={styles.link} href="/user">
+                <a className={styles.link} href={`/user/${data.user_id}`}>
                   <b>{data.user.username}</b>
                 </a>
                 <Avatar {...stringAvatar(`${data.user.username}`)} variant="rounded" />
@@ -67,7 +68,7 @@ export default function JobBar({ data }) {
                       : "Free"}
                   </b>
                 </div>
-                <a className={styles.link} href="/location">
+                <a className={styles.link} href={`/jobs`}>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <AddLocationSharpIcon />
                     {data.area}
