@@ -8,6 +8,10 @@ export const getReviewByJobId = async (req, res) => {
     where: {
       target: "job " + req.params.job_id,
     },
+    include: {
+      model: User,
+      attributes: ["username"],
+    },
   });
 
   return res.status(200).json(responseSuccess(reviews));
@@ -17,6 +21,10 @@ export const getReviewByUserId = async (req, res) => {
   const reviews = await Review.findAll({
     where: {
       target: "user " + req.params.target_user_id,
+    },
+    include: {
+      model: User,
+      attributes: ["username"],
     },
   });
 
@@ -28,7 +36,7 @@ export const newJobReview = async (req, res) => {
 
   const review = await Review.findOne({ where: { id: newReview.id } });
 
-  return res.status(400).json(responseSuccess(review));
+  return res.status(200).json(responseSuccess(review));
 };
 
 export const newUserReview = async (req, res) => {
@@ -36,7 +44,7 @@ export const newUserReview = async (req, res) => {
 
   const review = await Review.findOne({ where: { id: newReview.id } });
 
-  return res.status(400).json(responseSuccess(review));
+  return res.status(200).json(responseSuccess(review));
 };
 
 export const deleteReview = async (req, res) => {

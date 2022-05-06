@@ -19,9 +19,18 @@ export const getAllJobs = async (req, res) => {
 
   const data = await Job.findAll({
     where: {
-      title: {
-        [Op.like]: "%" + search + "%",
-      },
+      [Op.or]: [
+        {
+          title: {
+            [Op.like]: "%" + search + "%",
+          },
+        },
+        {
+          area: {
+            [Op.like]: "%" + search + "%",
+          },
+        },
+      ],
     },
     limit: size,
     offset: offset,
@@ -46,6 +55,20 @@ export const getAllJobs = async (req, res) => {
 
 export const getJobById = async (req, res) => {
   const data = await findJobById(req.params.id, ["username", "email"]);
+
+  return res.status(200).json(responseSuccess(data));
+};
+
+export const getJobByUserId = async (req, res) => {
+  const data = await Job.findAll({
+    where: {
+      user_id: req.params.user_id,
+    },
+    include: {
+      model: User,
+      attributes: ["username", "email"],
+    },
+  });
 
   return res.status(200).json(responseSuccess(data));
 };

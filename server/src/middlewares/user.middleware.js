@@ -5,12 +5,18 @@ import { responseError } from "../const/app.const";
 const User = database.Model.userModel;
 
 export const updateProfile = async (req, res, next) => {
-  if (!req.body.username) {
-    return res.json(responseError("Tên không được để trống"));
-  }
-
   if (!req.body.email) {
     return res.status(400).json(responseError("Yêu cầu email"));
+  }
+
+  if (!req.body.username) {
+    const user = User.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+    req.body.username = user.username;
+    //return res.json(responseError("Tên không được để trống"));
   }
 
   if (!validateEmail(req.body.email)) {

@@ -11,6 +11,8 @@ jobRoute.get(APIRoute.jobs, authMiddleware.validateToken, jobController.getAllJo
 
 jobRoute.get(APIRoute.job_id, authMiddleware.validateToken, jobController.getJobById);
 
+jobRoute.get(APIRoute.job_user_id, authMiddleware.validateToken, jobController.getJobByUserId);
+
 jobRoute.post(
   APIRoute.jobs,
   authMiddleware.validateToken,

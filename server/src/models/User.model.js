@@ -9,7 +9,7 @@ const Users = (sequelize, Sequelize) => {
     username: Sequelize.TEXT + " CHARSET utf8 COLLATE utf8_general_ci",
     email: Sequelize.STRING,
     password: Sequelize.TEXT,
-    phone_number: Sequelize.INTEGER,
+    phone_number: Sequelize.STRING,
     address: Sequelize.TEXT + " CHARSET utf8 COLLATE utf8_general_ci",
     area: Sequelize.TEXT + " CHARSET utf8 COLLATE utf8_general_ci",
     skills: Sequelize.STRING,
