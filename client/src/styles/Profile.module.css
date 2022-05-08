@@ -1,0 +1,116 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+.main_container {
+  background: linear-gradient(
+    16deg,
+    rgba(157, 152, 245, 1) 0%,
+    rgba(79, 118, 156, 0.8606793059020483) 46%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+.profile_page .profile_header {
+  box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0);
+}
+
+.profile_page .profile_header .cover {
+  position: relative;
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.profile_page .profile_header .cover {
+  border-radius: 0.25rem 0.25rem 0 0;
+  width: 100%;
+  height: 250px;
+}
+
+@media (max-width: 767px) {
+  .profile_page .profile_header .cover figure img {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+    margin-top: 15px;
+  }
+}
+
+.profile_page .profile_header .cover .cover_photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.profile_page .profile_header .cover .cover_body {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  padding: 30px 20px;
+}
+
+.profile_page .profile_header .cover .cover_body .profile_pic {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+
+.profile_page .profile_header .cover .cover_body .profile_name {
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: 17px;
+  color: #fff;
+}
+
+.profile_page .profile_header .header_links {
+  padding: 15px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background: rgb(255, 255, 255);
+  border-radius: 0 0 0.25rem 0.25rem;
+}
+
+.img_xs {
+  width: 60px;
+  height: 60px;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+.grid_margin {
+  margin-bottom: 1rem;
+}
+
+.card {
+  box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+  -webkit-box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+  -moz-box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+  -ms-box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #f2f4f9;
+  border-radius: 0.25rem;
+}
+
+.rounded {
+  border-radius: 0.25rem !important;
+}
+
+.head_card {
+  font-weight: bold;
+  color: #3d007e;
+}

@@ -1,0 +1,14 @@
+.wrapper {
+  margin: 30px 8%;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.alignCenter {
+  display: flex;
+  align-items: center;
+}

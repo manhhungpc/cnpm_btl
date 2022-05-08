@@ -1,0 +1,40 @@
+.container {
+  margin: 3% 10%;
+}
+
+.userInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.field {
+  margin: 20px 0;
+}
+
+.content {
+  font-family: arial;
+  color: #808089;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.acceptBtn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  margin: 10px 0;
+}
+
+.notif {
+  text-align: center;
+  color: #e6b801;
+  font-weight: 600;
+}
+
+.received {
+  color: #ff3333;
+  font-size: 25px;
+}

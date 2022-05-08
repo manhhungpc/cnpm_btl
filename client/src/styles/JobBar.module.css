@@ -1,0 +1,42 @@
+.wrapper {
+  margin-bottom: 10px;
+  border: 1px solid #c4c4c4;
+}
+
+.description {
+  white-space: nowrap;
+  width: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: arial;
+  color: #808089;
+  font-weight: 600;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #f79d1d;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #b43a05;
+}
+
+.disable {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.unavailable {
+  margin-bottom: 0;
+  color: #b40505;
+  font-weight: 600;
+}
