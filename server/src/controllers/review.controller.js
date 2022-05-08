@@ -2,6 +2,7 @@ import database from "../utils/db";
 import { responseSuccess } from "../const/app.const";
 
 const Review = database.Model.reviewModel;
+const User = database.Model.userModel;
 
 export const getReviewByJobId = async (req, res) => {
   const reviews = await Review.findAll({

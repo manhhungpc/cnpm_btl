@@ -14,9 +14,6 @@ const Jobs = (sequelize, Sequelize) => {
     type: Sequelize.INTEGER,
     time_required: {
       type: Sequelize.DATE,
-      get() {
-        return this.getDataValue("time_required").toLocaleString("en-GB", { timeZone: "UTC" });
-      },
     },
     available: Sequelize.BOOLEAN,
     fee: Sequelize.STRING,

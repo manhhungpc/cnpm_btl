@@ -74,13 +74,15 @@ export const updateJob = async (req, res, next) => {
     return res.status(403).json(responseError("Không có quyền thay đổi"));
   }
 
-  let arrNotif = [];
-  if (job.notif) {
-    arrNotif = JSON.parse(job.notif);
+  if (req.body.notif) {
+    let arrNotif = [];
+    if (job.notif) {
+      arrNotif = JSON.parse(job.notif);
+    }
+    arrNotif.push(req.body.notif);
+    req.body.notif = arrNotif;
+    req.body.notif = JSON.stringify(req.body.notif);
   }
-  arrNotif.push(req.body.notif);
-  req.body.notif = arrNotif;
-  req.body.notif = JSON.stringify(req.body.notif);
   /* From User table
   notif:{
     id(user): UID,
@@ -98,10 +100,10 @@ export const updateJob = async (req, res, next) => {
     area: req.body.area ? req.body.area : job.area,
     contact: req.body.contact ? req.body.contact : job.contact,
     type: req.body.type ? req.body.type : job.type,
-    time_required: req.body.time_required ? req.body.time_required : job.time_required,
-    available: req.body.available ? req.available : job.available,
+    // time_required: req.body.time_required ? req.body.time_required : job.time_required,
+    available: JSON.stringify(req.body.available) ? req.available : job.available,
     fee: req.body.fee ? req.body.fee : job.fee,
-    notif: req.body.notif,
+    notif: req.body.notif ? req.body.notif : job.notif,
     user_id: job.user_id,
   };
 
@@ -110,7 +112,7 @@ export const updateJob = async (req, res, next) => {
 
 export const deleteJob = async (req, res, next) => {
   const job = await findJobById(req.params.id);
-  if (req.body.user_id !== job.user_id) {
+  if (req.body.id !== job.user_id) {
     return res.status(403).json(responseError("Không có quyền thay đổi"));
   }
 

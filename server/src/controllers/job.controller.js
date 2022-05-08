@@ -82,9 +82,15 @@ export const createJob = async (req, res) => {
 };
 
 export const updateJob = async (req, res) => {
+  const exclude = ["time_required"];
+  const updateColumn = Object.keys(User.rawAttributes).filter((col) => !exclude.includes(col));
+
   await Job.update(req.body, {
     where: {
       id: req.params.id,
+    },
+    fields: {
+      updateColumn,
     },
   });
 

@@ -112,8 +112,8 @@ export const deleteReview = async (req, res, next) => {
     return res.status(400).json(responseError("Không tồn tại review này"));
   }
 
-  console.log(review, review.id);
-  if (req.body.user_id != review.user_id) {
+  // console.log(review, review.id);
+  if (req.body.id != review.user_id) {
     return res.status(400).json(responseError("Bạn không có quyền xóa đánh giá này"));
   }
 
