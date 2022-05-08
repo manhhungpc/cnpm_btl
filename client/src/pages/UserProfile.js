@@ -7,7 +7,6 @@ import Offers from "../components/Offers";
 import Review from "../components/Review";
 import Rating from "../components/RatingChart";
 import JobBar from "../components/JobBar";
-import BorderColorSharpIcon from "@mui/icons-material/BorderColorSharp";
 import { useUser } from "../utils/useUser";
 import { useToken } from "../utils/useToken";
 import { api } from "../utils/api";
@@ -15,6 +14,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
+import ReviewCard from "../components/ReviewCard";
 
 const getBsClass = (classNames = "") =>
   classNames
@@ -31,6 +31,7 @@ export default function UserProfile() {
   const [skill, setSkill] = useState([]);
   const params = useParams();
 
+  console.log(user.id);
   const headers = {
     headers: { authorization: `Bearer ${token}` },
   };
@@ -83,7 +84,7 @@ export default function UserProfile() {
                       </div>
                     </div>
                   </div>
-                  <div className={Styles.header_links}>
+                  {/* <div className={Styles.header_links}>
                     <div className={getBsClass("row")}>
                       <div className={getBsClass("col- col-lg-3")}>
                         <div className={getBsClass("count-data text-center")}>
@@ -112,7 +113,7 @@ export default function UserProfile() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -131,7 +132,8 @@ export default function UserProfile() {
                   <JobBar data={data} />
                 ))}
                 <hr />
-                <Rating />
+                <ReviewCard owner={params.id === user.id ? true : false} />
+                {/* <Rating /> */}
               </div>
             </div>
           </div>

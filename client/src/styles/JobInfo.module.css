@@ -5,7 +5,7 @@
 .userInfo {
   display: flex;
   justify-content: space-between;
-  width: 30%;
+  width: 40%;
 }
 
 .field {
@@ -32,4 +32,9 @@
   text-align: center;
   color: #e6b801;
   font-weight: 600;
+}
+
+.received {
+  color: #ff3333;
+  font-size: 25px;
 }

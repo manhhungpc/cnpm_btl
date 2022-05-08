@@ -10,7 +10,7 @@ import Comment from "./Comment";
 import axios from "axios";
 import { api } from "../utils/api";
 import { useToken } from "../utils/useToken";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useUser } from "../utils/useUser";
 
 export default function ReviewCard({ owner }) {
@@ -28,10 +28,8 @@ export default function ReviewCard({ owner }) {
   };
 
   const getJobComment = async () => {
-    if (target.split(" ")[0] === "job") {
-      const dataJob = await axios.get(`${api}/review${pathname}`, headers);
-      setComments(dataJob.data.data);
-    }
+    const dataJob = await axios.get(`${api}/review${pathname}`, headers);
+    setComments(dataJob.data.data);
   };
 
   const onSubmitComment = async () => {
@@ -53,16 +51,19 @@ export default function ReviewCard({ owner }) {
 
   return (
     <>
-      <Card variant="outlined">
+      <h3>Đánh giá</h3>
+
+      <Card variant="outlined" style={{ marginBottom: "30px" }}>
         <CardContent>
           {!owner ? (
             <>
-              <h3>Viết đánh giá:</h3>
+              <h3>Viết bình luận của bạn:</h3>
               <span>Bình luận: </span>
               <TextField
                 variant="outlined"
                 multiline
                 rows={4}
+                label=" "
                 fullWidth
                 size="small"
                 onChange={(e) => setReview(e.target.value)}
@@ -77,11 +78,12 @@ export default function ReviewCard({ owner }) {
                 />
               </div>
               <div className={styles.pleasure}>
-                <span>Bạn có hài lòng không?</span>
+                <span className={styles.buttonPleasure}>Bạn có hài lòng không?</span>
                 <Button
                   variant={pleasure ? "contained" : "outlined"}
                   size="small"
                   onClick={(e) => setPleasure(true)}
+                  style={{ marginRight: "16px" }}
                 >
                   Có
                 </Button>
@@ -103,9 +105,11 @@ export default function ReviewCard({ owner }) {
             ""
           )}
           <hr />
-          {comments.map((data) => (
-            <Comment data={data} />
-          ))}
+          {comments.length ? (
+            comments.map((data) => <Comment data={data} headers={headers} />)
+          ) : (
+            <b>Hiện tại chưa có bình luận nào</b>
+          )}
         </CardContent>
       </Card>
     </>

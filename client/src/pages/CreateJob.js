@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import styles from "../styles/CreateJob.module.css";
 import JobForm from "../components/JobForm";
 import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import AirlineStopsIcon from "@mui/icons-material/AirlineStops";
+import { useUser } from "../utils/useUser";
 
 export default function CreateJob() {
+  const user = useUser();
   return (
     <>
       <Navbar />
@@ -21,7 +24,9 @@ export default function CreateJob() {
               phí
             </p>
             <h3>Xem lại những công việc bạn đã tạo</h3>
-            <Button endIcon={<WorkHistoryIcon />}>Công việc của bạn</Button>
+            <Button href={`/user/${user.id}`} endIcon={<WorkHistoryIcon />}>
+              Công việc của bạn
+            </Button>
             <h3>Hoặc xem những công việc khác xung quanh bạn</h3>
             <Button href="/jobs" endIcon={<AirlineStopsIcon />}>
               Các công việc khác
@@ -32,6 +37,7 @@ export default function CreateJob() {
           </Grid>
         </Grid>
       </div>
+      <Footer />
     </>
   );
 }

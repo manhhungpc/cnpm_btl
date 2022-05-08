@@ -42,7 +42,8 @@ export default function JobBar({ data }) {
   const linkInfo = `/job/${data.id}`;
   return (
     <Card className={styles.wrapper}>
-      <CardActionArea href={linkInfo} className={data.available ? "" : styles.disable}>
+      <CardActionArea href={linkInfo}>
+        {/* className={data.available ? "" : styles.disable} */}
         <CardContent>
           <Grid container>
             <Grid xs={6}>

@@ -44,6 +44,7 @@ const sortOption = [
     label: "Tiền lương giảm dần",
     value: "fee DESC",
   },
+  { label: "Còn việc", value: "available DESC" },
 ];
 export default function Job() {
   const [sort, setSort] = useState("updatedAt DESC");
@@ -72,23 +73,6 @@ export default function Job() {
   useEffect(() => {
     getRequestJob();
   }, [sort]);
-
-  const RelatedJob = () => (
-    <Stack spacing={2}>
-      <Link href="#" underline="none">
-        <Paper elevation={3} style={{ padding: "10px" }}>
-          <h3>Cần người kèm học</h3>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div>100$</div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <AddLocationSharpIcon />
-              Ha Noi
-            </div>
-          </div>
-        </Paper>
-      </Link>
-    </Stack>
-  );
 
   return (
     <>
@@ -139,11 +123,11 @@ export default function Job() {
             >
               Tìm
             </Button>
-            <div>
+            {/* <div>
               <h3>Những công việc có thể bạn thích</h3>
               <hr />
               <RelatedJob />
-            </div>
+            </div> */}
           </Grid>
         </Grid>
       </div>

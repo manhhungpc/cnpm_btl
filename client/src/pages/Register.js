@@ -25,7 +25,7 @@ export default function Register() {
   const [phoneNumber, setPhoneNumber] = useState(0);
   const [address, setAddress] = useState("");
   const [area, setArea] = useState("");
-  const [skills, setSkills] = useState("");
+  const [skills, setSkills] = useState([]);
 
   const [error, setError] = useState("");
   const [token, setToken] = useToken();
