@@ -48,7 +48,9 @@ export default function JobBar({ data }) {
           <Grid container>
             <Grid xs={6}>
               <h3>{data.title} </h3>
-              <small className={styles.description}>{data.content}</small>
+              <div className={styles.description}>
+                <small>{data.content}</small>
+              </div>
               {data.available ? "" : <p className={styles.unavailable}>Đã có người nhận</p>}
             </Grid>
             <Grid xs={6}>

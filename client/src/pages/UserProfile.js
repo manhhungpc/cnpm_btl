@@ -29,6 +29,7 @@ export default function UserProfile() {
   const [jobs, setJobs] = useState([]);
   const [info, setInfo] = useState({});
   const [skill, setSkill] = useState([]);
+  const [username, setUsername] = useState("");
   const params = useParams();
 
   console.log(user.id);
@@ -45,6 +46,7 @@ export default function UserProfile() {
     setSkill(JSON.parse(userInfo.data.data.skills));
     // userInfo.data.data.skills = JSON.parse(userInfo.data.data.skills);
     setInfo(userInfo.data.data);
+    setUsername(userInfo.data.data.username);
   };
   useEffect(() => {
     getJobByUserId();
@@ -76,7 +78,7 @@ export default function UserProfile() {
                           alt="profile"
                         />
                         <span className={Styles.profile_name}>
-                          {user.name}
+                          {username}
                           {/* <button className={getBsClass("btn btn-link shadow-none")}>
                             <BorderColorSharpIcon />
                           </button> */}

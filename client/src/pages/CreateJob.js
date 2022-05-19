@@ -17,7 +17,7 @@ export default function CreateJob() {
       <div className={styles.container}>
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <h1 className={styles.title}>Xin chào User</h1>
+            <h1 className={styles.title}>Xin chào {user.name}</h1>
             <p>
               Bạn cần giúp đỡ? Hãy tạo 1 công việc mới, chúng tôi sẽ giúp đỡ bạn tìm kiếm những
               người có thể giúp bạn. Thao tác tạo cũng rất đơn giản, nhanh chóng, và hoàn toàn miễn

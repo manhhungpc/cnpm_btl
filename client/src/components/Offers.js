@@ -107,13 +107,15 @@ export default function Offers({ info, skill, params }) {
                   </div>
                 )}
 
-                <Button
-                  variant="contained"
-                  onClick={() => setAddOpen(!addOpen)}
-                  startIcon={<AddIcon />}
-                >
-                  Thêm kĩ năng/Chuyên môn
-                </Button>
+                {user.id === params.id && (
+                  <Button
+                    variant="contained"
+                    onClick={() => setAddOpen(!addOpen)}
+                    startIcon={<AddIcon />}
+                  >
+                    Thêm kĩ năng/Chuyên môn
+                  </Button>
+                )}
               </div>
             </div>
           </div>
